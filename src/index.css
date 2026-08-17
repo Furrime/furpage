@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Comic+Neue:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #D4A574;
+  --color-secondary: #F8BBD9;
+  --color-accent: #B8E4F0;
+  --color-background: #FFF8F0;
+  --color-surface: rgba(255, 255, 255, 0.7);
+  --color-text: #4A4A4A;
+  --color-muted: #8B8B8B;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.fur-border {
+  border-radius: 24px;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.05),
+    0 8px 32px rgba(212, 165, 116, 0.15);
+}
+
+.paw-print {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 50% 0%, var(--color-primary) 0%, transparent 50%),
+              radial-gradient(circle at 0% 50%, var(--color-primary) 0%, transparent 50%),
+              radial-gradient(circle at 100% 50%, var(--color-primary) 0%, transparent 50%),
+              radial-gradient(circle at 50% 100%, var(--color-primary) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, var(--color-primary) 30%, transparent 70%);
+}
+
+.floating-cursor {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  transition: transform 0.3s ease;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.particle {
+  animation: particle-float 15s linear infinite;
+}
+
+.star {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.bg-fur {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #D4A574 0%, #F8BBD9 50%, #B8E4F0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
