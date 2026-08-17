@@ -19,6 +19,7 @@ dist-ssr
 api/db/data/
 
 # Editor directories and files
+.trae
 .vscode/*
 !.vscode/extensions.json
 .idea
